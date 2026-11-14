@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#20364d">
+<title>METODOLOGIJA | Istraživački vodič</title>
+<style>
+:root{--navy:#20364d;--blue:#426d8e;--pale:#edf3f7;--ink:#263746;--muted:#667887;--line:#dbe4eb;--gold:#b58a55}
+*{box-sizing:border-box}body{margin:0;background:#f5f7f9;color:var(--ink);font:15px/1.58 system-ui,Arial,sans-serif}
+header{background:linear-gradient(125deg,#1d3349,#416c8d);color:#fff;padding:28px max(18px,calc((100% - 1120px)/2))}
+.brand{letter-spacing:3px;font-size:11px;font-weight:800;color:#d8e5ee}.hero{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}.hero h1{font-size:clamp(30px,5vw,43px);letter-spacing:1px;margin:7px 0}.hero p{margin:0;color:#e1ebf2;max-width:650px}.pill{border:1px solid #9bb2c4;border-radius:30px;padding:7px 13px;font-size:12px}
+nav{position:sticky;top:0;z-index:10;display:flex;gap:4px;overflow:auto;background:#fff;border-bottom:1px solid var(--line);padding:8px max(8px,calc((100% - 1120px)/2))}
+nav button{border:0;background:transparent;color:#536575;padding:10px 12px;border-radius:9px;font-weight:650;white-space:nowrap;cursor:pointer}nav button.active,nav button:hover{background:var(--pale);color:var(--navy)}
+main{max-width:1120px;margin:25px auto;padding:0 17px 55px}.view{display:none}.view.active{display:block}h2{font-size:25px;color:var(--navy);margin:0 0 5px}.sub{color:var(--muted);margin:0 0 19px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 3px 12px #1d334908}.card h3{color:var(--navy);font-size:17px;margin:0 0 7px}.card p{color:var(--muted);margin:0}.metric{font-size:30px;font-weight:800;color:var(--navy)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}button{cursor:pointer}.primary{background:var(--navy);color:white;border:0;border-radius:9px;padding:10px 15px;font-weight:700}.secondary{background:var(--pale);color:var(--navy);border:1px solid var(--line);border-radius:9px;padding:9px 13px;font-weight:650}.remove{background:#fff1ef;color:#9b4036;border:1px solid #f0d2ce;border-radius:8px;padding:7px 10px}
+label.field{display:block;margin:12px 0 5px;font-weight:700;color:#40576b}input,textarea,select{width:100%;padding:11px 12px;border:1px solid #cbd7e0;border-radius:9px;background:white;color:var(--ink);font:inherit}textarea{min-height:105px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.progress{height:9px;border-radius:20px;background:#e8edf1;overflow:hidden;margin:12px 0}.progress span{height:100%;display:block;background:#6d91aa;width:0}
+.phase{display:flex;gap:12px}.num{width:32px;height:32px;flex:0 0 32px;border-radius:50%;display:grid;place-items:center;background:#eaf0f5;color:var(--navy);font-weight:800}.phase.done .num{background:#dcece4;color:#286044}.phase h3{margin:0 0 5px}.phase p{margin:0 0 8px}.phase label{font-size:13px;color:#526779;display:flex;align-items:center;gap:8px}
+.item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px;margin-top:10px}.item small{display:block;color:var(--muted);margin-top:4px}.item strong{color:var(--navy)}
+.notice{background:#f2f6f9;border-left:3px solid var(--blue);padding:12px 14px;border-radius:8px;color:#465e72;font-size:13px}
+.topic{border:1px solid var(--line);padding:12px;border-radius:10px;margin-top:8px;background:#fff}.topic strong{color:var(--navy)}.topic p{margin:4px 0;color:var(--muted);font-size:13px}
+footer{text-align:center;color:#82909b;font-size:12px;border-top:1px solid var(--line);padding:24px}
+@media(max-width:600px){.row2{grid-template-columns:1fr}main{margin-top:18px}}
+</style></head>
+<body>
+<header><div class="brand">DIGITALNI CENTAR ZA ISTRAŽIVANJE</div><div class="hero"><div><h1>METODOLOGIJA</h1><p>Od interesovanja do istraživačkog rada — vodič, alati i podrška na svakom koraku.</p></div><span class="pill">UČI · ISTRAŽUJ · STVARAJ</span></div></header>
+<nav>
+<button class="active" data-view="home">Početna</button><button data-view="topics">Pronađi temu</button><button data-view="guide">Vodič za rad</button><button data-view="request">Zatraži pomoć</button><button data-view="planner">Planer</button><button data-view="notes">Beleške</button><button data-view="sources">Izvori</button><button data-view="tools">Alati</button>
+</nav>
+<main>
+<section id="home" class="view active">
+<h2>Dobro došli u METODOLOGIJU</h2><p class="sub">Mesto na kojem možeš da pronađeš ideju, naučiš kako se radi istraživanje i zatražiš podršku.</p>
+<div class="grid">
+<article class="card"><h3>Pronađi istraživačku temu</h3><p>Odaberi oblast i interesovanja. Dobićeš predloge tema i ideje kako da ih suziš.</p><div class="actions"><button class="primary" onclick="show('topics')">Izaberi temu</button></div></article>
+<article class="card"><h3>Nauči kako se radi istraživanje</h3><p>Vodič korak po korak: od problema i cilja do metodologije, rezultata i zaključka.</p><div class="actions"><button class="secondary" onclick="show('guide')">Otvori vodič</button></div></article>
+<article class="card"><h3>Razgovaraj sa autorom platforme</h3><p>Pošalji oblast, ideju ili pitanje i zatraži pomoć pri razradi istraživačkog rada.</p><div class="actions"><button class="secondary" onclick="show('request')">Zatraži pomoć</button></div></article>
+<article class="card"><h3>Moj istraživački prostor</h3><div class="metric" id="pct">0%</div><div class="progress"><span id="bar"></span></div><p>Prati zadatke, beleške i napredak kroz faze rada.</p></article>
+</div>
+<div class="card" style="margin-top:15px"><h3>Kako da počneš?</h3><p>Ne moraš već da imaš gotovu temu. Dovoljno je da znaš šta te zanima. METODOLOGIJA će ti pomoći da od interesovanja napraviš istraživačko pitanje.</p></div>
+</section>
+
+<section id="topics" class="view">
+<h2>Pronađi temu koja te zanima</h2><p class="sub">Odgovori na kratka pitanja. Predlozi su početne ideje koje se mogu prilagoditi tvom nivou, vremenu i dostupnim podacima.</p>
+<div class="card">
+<label class="field" for="area">Koja oblast te zanima?</label><select id="area"><option value="">Izaberi oblast</option><option>Psihologija</option><option>Medicina i zdravlje</option><option>Biologija</option><option>Obrazovanje</option><option>Sociologija</option><option>Tehnologija</option><option>Životna sredina</option><option>Drugo</option></select>
+<label class="field" for="interest">Šta te posebno zanima?</label><textarea id="interest" placeholder="Na primer: stres kod učenika, pamćenje, san, fizička aktivnost..."></textarea>
+<div class="row2"><div><label class="field" for="level">Nivo obrazovanja</label><select id="level"><option>Srednja škola</option><option>Osnovna škola</option><option>Fakultet</option><option>Samostalno istraživanje</option></select></div><div><label class="field" for="kind">Kakav rad želiš?</label><select id="kind"><option>Anketno istraživanje</option><option>Eksperiment</option><option>Pregled literature</option><option>Intervju</option><option>Još ne znam</option></select></div></div>
+<div class="actions"><button class="primary" id="suggest">Predloži mi teme</button></div>
+<div id="suggestions" aria-live="polite"></div>
+</div>
+</section>
+
+<section id="guide" class="view">
+<h2>Vodič za izradu istraživačkog rada</h2><p class="sub">Prođi kroz faze redom. Svaka faza sadrži objašnjenje šta treba da uradiš.</p><div id="phases" class="grid"></div>
+</section>
+
+<section id="request" class="view">
+<h2>Zatraži individualnu pomoć</h2><p class="sub">Opiši šta te zanima, koju temu imaš ili u čemu ti je potrebna podrška.</p>
+<div class="card">
+<div class="row2"><div><label class="field" for="person">Ime ili nadimak</label><input id="person" placeholder="Kako da ti se obraćamo?"></div><div><label class="field" for="email">Kontakt e-mail</label><input id="email" type="email" placeholder="tvoja.adresa@example.com"></div></div>
+<label class="field" for="rlevel">Nivo obrazovanja</label><select id="rlevel"><option>Srednja škola</option><option>Osnovna škola</option><option>Fakultet</option><option>Samostalno istraživanje</option></select>
+<label class="field" for="rinterest">Koja oblast ili tema te zanima?</label><input id="rinterest" placeholder="Npr. psihologija, stres, učenje...">
+<label class="field" for="rhelp">Kakva pomoć ti je potrebna?</label><select id="rhelp"><option>Nemam temu — potrebni su mi predlozi</option><option>Imam temu — želim da je preciziram</option><option>Potrebna mi je pomoć oko cilja i hipoteza</option><option>Potrebna mi je pomoć oko metodologije</option><option>Potrebna mi je pomoć oko ankete ili instrumenta</option><option>Potrebna mi je pomoć oko analize i pisanja</option><option>Imam drugo pitanje</option></select>
+<label class="field" for="rmessage">Dodatno objasni svoju ideju ili pitanje</label><textarea id="rmessage" placeholder="Napiši šta si do sada osmislio/la, šta ti nije jasno i šta želiš da postigneš..."></textarea>
+<div class="actions"><button class="primary" id="makeRequest">Pripremi zahtev</button><button class="secondary" id="copyRequest">Kopiraj tekst</button></div>
+<div id="requestOutput" class="notice" style="margin-top:14px">Kada pripremiš zahtev, dobićeš uredno sastavljenu poruku koju možeš da pošalješ osobi koja vodi platformu.</div>
+<div class="notice" style="margin-top:12px"><strong>Važno:</strong> Ova probna verzija ne šalje podatke automatski na internet niti ih prosleđuje autoru. Zahtev se priprema na tvom uređaju. Za stvarno primanje zahteva od korisnika potrebno je povezati aplikaciju sa bazom podataka ili servisom za obrasce i podesiti privatnost.</div>
+</div>
+</section>
+
+<section id="planner" class="view">
+<h2>Planer istraživanja</h2><p class="sub">Podeli rad na manje zadatke i prati rokove.</p><div class="card">
+<div class="row2"><div><label class="field" for="taskTitle">Zadatak</label><input id="taskTitle" placeholder="Npr. Pronaći literaturu"></div><div><label class="field" for="taskDate">Rok</label><input id="taskDate" type="date"></div></div>
+<label class="field" for="taskDetails">Napomena</label><input id="taskDetails" placeholder="Šta treba uraditi?"><div class="actions"><button class="primary" id="addTask">Dodaj zadatak</button></div></div><div id="tasks"></div>
+</section>
+<section id="notes" class="view">
+<h2>Beleške i ideje</h2><p class="sub">Čuvaj svoje istraživačke ideje, pitanja i nacrte.</p><div class="card"><label class="field" for="noteTitle">Naslov</label><input id="noteTitle" placeholder="Naslov beleške"><label class="field" for="noteBody">Sadržaj</label><textarea id="noteBody" placeholder="Zapiši ideju..."></textarea><div class="actions"><button class="primary" id="addNote">Sačuvaj belešku</button></div></div><div id="notesList"></div>
+</section>
+<section id="sources" class="view">
+<h2>Biblioteka izvora</h2><p class="sub">Evidentiraj knjige, članke i pouzdane internet izvore.</p><div class="card"><div class="row2"><div><label class="field" for="author">Autor / organizacija</label><input id="author" placeholder="Prezime, I."></div><div><label class="field" for="year">Godina</label><input id="year" placeholder="2025"></div></div><label class="field" for="title">Naslov</label><input id="title" placeholder="Naslov izvora"><label class="field" for="url">URL</label><input id="url" type="url" placeholder="https://..."><div class="actions"><button class="primary" id="addSource">Dodaj izvor</button></div></div><div id="sourceList"></div>
+</section>
+<section id="tools" class="view">
+<h2>Praktični alati</h2><p class="sub">Mali alati koji olakšavaju svakodnevni istraživački rad.</p><div class="grid">
+<div class="card"><h3>Brojač reči</h3><label class="field" for="wordText">Unesi tekst</label><textarea id="wordText" placeholder="Nalepi ili upiši tekst..."></textarea><div id="wordResult" class="notice">0 reči · 0 karaktera</div></div>
+<div class="card"><h3>Podsetnik za istraživačko pitanje</h3><p>Dobro pitanje je jasno, konkretno, dovoljno usko i može se istražiti odgovarajućom metodom.</p></div>
+<div class="card"><h3>Osnovni podsetnik za APA citiranje</h3><p>Autor. (Godina). <em>Naslov dela.</em> Izdavač ili naziv časopisa. DOI/URL kada postoji. Uvek proveri izdanje APA stila koje se traži.</p></div>
+</div></section>
+</main><footer>METODOLOGIJA · Istražuj promišljeno, piši odgovorno.</footer>
+<script>
+const phases=[
+['Izbor teme','Izaberi oblast koja te zanima. Tema treba da bude dovoljno uska, jasna i ostvariva u vremenu koje imaš.'],
+['Problem, predmet i cilj','Objasni koji problem istražuješ, šta je predmet istraživanja i šta želiš da saznaš ili postigneš.'],
+['Istraživačka pitanja i hipoteze','Postavi pitanja na koja istraživanje treba da odgovori. Hipotezu formuliši kada je primerena tipu istraživanja.'],
+['Pregled literature','Pronađi stručne knjige i naučne radove. Beleži autora, godinu, naslov i podatke o izvoru.'],
+['Metodologija','Odredi vrstu istraživanja, metode, tehnike, instrumente, uzorak i način sprovođenja.'],
+['Etička pitanja','Vodi računa o dobrovoljnom učešću, saglasnosti, privatnosti i zaštiti podataka učesnika.'],
+['Prikupljanje podataka','Sprovede istraživanje prema unapred definisanom postupku i beleži podatke uredno.'],
+['Obrada i analiza','Organizuj podatke, izaberi odgovarajuću analizu i prikaži nalaze tabelama ili grafikonima.'],
+['Diskusija i zaključak','Protumači rezultate u odnosu na pitanja i literaturu. Navedi ograničenja i moguće pravce daljeg rada.'],
+['Pisanje i provera','Uredi strukturu, jezik, citate i literaturu. Proveri da li zaključci proizlaze iz rezultata.']];
+const $=id=>document.getElementById(id), get=(k,d=[])=>{try{return JSON.parse(localStorage.getItem('met2_'+k))??d}catch{return d}}, put=(k,v)=>localStorage.setItem('met2_'+k,JSON.stringify(v));
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'})}
+window.show=show;document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.view));
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderPhases(){let done=get('phases');$('phases').innerHTML=phases.map((p,i)=>`<article class="card phase ${done.includes(i)?'done':''}"><div class="num">${done.includes(i)?'✓':i+1}</div><div><h3>${p[0]}</h3><p>${p[1]}</p><label><input type="checkbox" style="width:auto" data-phase="${i}" ${done.includes(i)?'checked':''}> Završeno</label></div></article>`).join('');document.querySelectorAll('[data-phase]').forEach(c=>c.onchange=()=>{let a=get('phases');a=c.checked?[...a,+c.dataset.phase]:a.filter(x=>x!==+c.dataset.phase);put('phases',[...new Set(a)]);renderPhases()});let n=Math.round(done.length/10*100);$('pct').textContent=n+'%';$('bar').style.width=n+'%'}
+function renderTasks(){let a=get('tasks');$('tasks').innerHTML=a.length?a.map((t,i)=>`<div class="item"><label><input type="checkbox" style="width:auto" data-task="${i}" ${t.done?'checked':''}> <strong>${safe(t.title)}</strong></label><small>${t.date?'Rok: '+safe(t.date)+' · ':''}${safe(t.details||'')}</small><button class="remove" data-del-task="${i}">Obriši</button></div>`).join(''):'<p class="sub">Još nema zadataka.</p>';document.querySelectorAll('[data-task]').forEach(c=>c.onchange=()=>{let x=get('tasks');x[+c.dataset.task].done=c.checked;put('tasks',x);renderTasks()});document.querySelectorAll('[data-del-task]').forEach(b=>b.onclick=()=>{let x=get('tasks');x.splice(+b.dataset.delTask,1);put('tasks',x);renderTasks()})}
+$('addTask').onclick=()=>{let title=$('taskTitle').value.trim();if(!title)return alert('Unesi naziv zadatka.');let a=get('tasks');a.push({title,date:$('taskDate').value,details:$('taskDetails').value,done:false});put('tasks',a);['taskTitle','taskDate','taskDetails'].forEach(x=>$(x).value='');renderTasks()};
+function renderNotes(){let a=get('notes');$('notesList').innerHTML=a.length?a.map((n,i)=>`<div class="item"><strong>${safe(n.title)}</strong><small>${safe(n.body).replace(/\n/g,'<br>')}</small><button class="remove" data-del-note="${i}">Obriši</button></div>`).join(''):'<p class="sub">Nema sačuvanih beležaka.</p>';document.querySelectorAll('[data-del-note]').forEach(b=>b.onclick=()=>{let x=get('notes');x.splice(+b.dataset.delNote,1);put('notes',x);renderNotes()})}
+$('addNote').onclick=()=>{if(!$('noteTitle').value.trim()||!$('noteBody').value.trim())return alert('Unesi naslov i sadržaj.');let a=get('notes');a.unshift({title:$('noteTitle').value,body:$('noteBody').value});put('notes',a);$('noteTitle').value='';$('noteBody').value='';renderNotes()};
+function renderSources(){let a=get('sources');$('sourceList').innerHTML=a.length?a.map((s,i)=>`<div class="item"><strong>${safe(s.author)}${s.year?', ('+safe(s.year)+')':''}</strong><small><em>${safe(s.title)}</em></small>${s.url?`<small><a href="${safe(s.url)}" target="_blank" rel="noopener">Otvori izvor</a></small>`:''}<button class="remove" data-del-source="${i}">Obriši</button></div>`).join(''):'<p class="sub">Nema dodatih izvora.</p>';document.querySelectorAll('[data-del-source]').forEach(b=>b.onclick=()=>{let x=get('sources');x.splice(+b.dataset.delSource,1);put('sources',x);renderSources()})}
+$('addSource').onclick=()=>{if(!$('author').value.trim()||!$('title').value.trim())return alert('Unesi autora i naslov.');let a=get('sources');a.unshift({author:$('author').value,year:$('year').value,title:$('title').value,url:$('url').value});put('sources',a);['author','year','title','url'].forEach(x=>$(x).value='');renderSources()};
+const topicBank={
+'Psihologija':['Povezanost kvaliteta sna i koncentracije kod srednjoškolaca','Uticaj fizičke aktivnosti na raspoloženje učenika','Strategije učenja i pamćenje školskog gradiva','Percepcija školskog stresa i načini suočavanja'],
+'Medicina i zdravlje':['Znanje mladih o značaju preventivnih zdravstvenih pregleda','Navike u vezi sa snom i dnevnim funkcionisanjem učenika','Stavovi mladih o značaju fizičke aktivnosti za zdravlje','Zdravstvena pismenost mladih o pravilnoj upotrebi lekova'],
+'Biologija':['Uticaj svetlosti na rast biljaka','Raznovrsnost biljnih vrsta u lokalnom okruženju','Povezanost uslova sredine i klijanja semena'],
+'Obrazovanje':['Povezanost organizacije vremena i školskih obaveza','Stavovi učenika o grupnom i individualnom učenju','Uloga povratne informacije u motivaciji za učenje'],
+'Sociologija':['Uticaj društvenih mreža na svakodnevne navike mladih','Stavovi mladih o volontiranju u lokalnoj zajednici','Slobodno vreme i kulturne navike srednjoškolaca'],
+'Tehnologija':['Navike učenika u korišćenju digitalnih alata za učenje','Stavovi učenika o veštačkoj inteligenciji u obrazovanju','Digitalna bezbednost i informisanost mladih'],
+'Životna sredina':['Navike učenika u razvrstavanju otpada','Stavovi mladih o zaštiti lokalne životne sredine','Potrošnja vode i ekološka svest u domaćinstvima'],
+'Drugo':['Istraživanje stavova mladih o odabranoj temi','Navike i ponašanja učenika u svakodnevnom životu','Informisanost mladih o temi od javnog značaja']};
+$('suggest').onclick=()=>{let area=$('area').value;if(!area)return alert('Izaberi oblast.');let interest=$('interest').value.trim(),arr=topicBank[area]||topicBank['Drugo'];$('suggestions').innerHTML='<h3 style="margin-top:18px;color:#20364d">Predlozi za tvoje istraživanje</h3>'+arr.map((t,i)=>`<div class="topic"><strong>${i+1}. ${t}</strong><p>Oblast: ${safe(area)} · Nivo: ${safe($('level').value)} · Mogući pristup: ${safe($('kind').value)}</p><button class="secondary" data-pick="${i}">Izaberi ovu temu</button></div>`).join('')+'<p class="notice" style="margin-top:12px">Predlozi su početne ideje. Pre izbora proveri da li možeš da prikupiš podatke i da li je tema primerena zadatku.</p>';document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>{$('rlevel').value=$('level').value;$('rinterest').value=arr[+b.dataset.pick];$('rmessage').value=(interest?'Moje dodatno interesovanje: '+interest+'\n':'')+'Želim da razradim ovu temu: '+arr[+b.dataset.pick]+'. Vrsta rada: '+$('kind').value;show('request')})};
+function buildRequest(){return `ZAHTEV ZA POMOĆ — METODOLOGIJA\nIme/nadimak: ${$('person').value.trim()||'Nije navedeno'}\nKontakt e-mail: ${$('email').value.trim()||'Nije naveden'}\nNivo: ${$('rlevel').value}\nOblast/tema: ${$('rinterest').value.trim()||'Nije navedeno'}\nPotrebna pomoć: ${$('rhelp').value}\nDodatno: ${$('rmessage').value.trim()||'Nije navedeno'}`}
+$('makeRequest').onclick=()=>{$('requestOutput').textContent=buildRequest()+'\n\nOvaj tekst još nije poslat. Kopiraj ga i pošalji autoru platforme.'};
+$('copyRequest').onclick=async()=>{let t=buildRequest();try{await navigator.clipboard.writeText(t);$('requestOutput').textContent='Zahtev je kopiran. Sada ga možeš nalepiti u poruku i poslati autoru platforme.'}catch{$('requestOutput').textContent=t+'\n\nAutomatsko kopiranje nije dostupno u ovom pregledaču; označi i kopiraj tekst ručno.'}};
+$('wordText').oninput=()=>{let t=$('wordText').value.trim();$('wordResult').textContent=(t?t.split(/\s+/).length:0)+' reči · '+$('wordText').value.length+' karaktera'};
+renderPhases();renderTasks();renderNotes();renderSources();
+</script></body></html>
